@@ -1,6 +1,6 @@
 # xemantic-project-template
 
-A template repository for Xemantic's Kotlin multiplatform projects
+Using WebComponents with Kotlin Multiplatform / JS
 
 [//]: # (TODO replace title and description)
 
@@ -56,7 +56,7 @@ From time to time, it is worth to:
 ### Update gradlew wrapper
 
 ```shell
-./gradlew wrapper --gradle-version 8.12.1 --distribution-type bin
+./gradlew wrapper --gradle-version 8.14.3 --distribution-type bin
 ```
 
 ### Update all the dependencies to the latest versions
