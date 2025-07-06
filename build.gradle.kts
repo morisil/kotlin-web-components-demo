@@ -3,7 +3,6 @@
 import com.xemantic.gradle.conventions.License
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
@@ -46,7 +45,7 @@ ${xemantic.description}
 ${xemantic.releasePageUrl}
 """
 
-val javaTarget = libs.versions.javaTarget.get()
+//val javaTarget = libs.versions.javaTarget.get()
 val kotlinTarget = KotlinVersion.fromVersion(libs.versions.kotlinTarget.get())
 
 repositories {
@@ -66,20 +65,20 @@ kotlin {
         progressiveMode = true
     }
 
-    jvm {
-        // set up according to https://jakewharton.com/gradle-toolchains-are-rarely-a-good-idea/
-        compilerOptions {
-            apiVersion = kotlinTarget
-            languageVersion = kotlinTarget
-            jvmTarget = JvmTarget.fromTarget(javaTarget)
-            freeCompilerArgs.add("-Xjdk-release=$javaTarget")
-            progressiveMode = true
-        }
-    }
+//    jvm {
+//        // set up according to https://jakewharton.com/gradle-toolchains-are-rarely-a-good-idea/
+//        compilerOptions {
+//            apiVersion = kotlinTarget
+//            languageVersion = kotlinTarget
+//            jvmTarget = JvmTarget.fromTarget(javaTarget)
+//            freeCompilerArgs.add("-Xjdk-release=$javaTarget")
+//            progressiveMode = true
+//        }
+//    }
 
     js {
         browser()
-        nodejs()
+        binaries.executable()
     }
 
     sourceSets {

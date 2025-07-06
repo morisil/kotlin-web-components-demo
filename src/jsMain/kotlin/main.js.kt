@@ -15,3 +15,7 @@
  */
 
 package com.xemantic.kotlin.webcomponents.demo
+
+fun main() {
+    console.log("Hello world")
+}

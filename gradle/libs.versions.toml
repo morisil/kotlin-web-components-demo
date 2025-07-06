@@ -1,6 +1,6 @@
 [versions]
 kotlinTarget = "2.2"
-javaTarget = "17"
+javaTarget = "22"
 
 kotlin = "2.2.0"
 
