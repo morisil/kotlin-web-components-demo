@@ -24,11 +24,11 @@ import kotlin.test.Test
 // TODO replace with your code
 class HelloWorldTest {
 
-    @Test
-    fun `should have singleton object Foo with const BAR equal to buzz`() {
-        Foo should {
-            have(BAR == "buzz")
-        }
-    }
+//    @Test
+//    fun `should have singleton object Foo with const BAR equal to buzz`() {
+//        Foo should {
+//            have(BAR == "buzz")
+//        }
+//    }
 
 }

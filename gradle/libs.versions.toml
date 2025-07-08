@@ -3,6 +3,7 @@ kotlinTarget = "2.2"
 javaTarget = "22"
 
 kotlin = "2.2.0"
+kotlinWrappers = "2025.7.1"
 
 xemanticKotlinTest = "1.9.0"
 
@@ -17,6 +18,7 @@ xemanticConventionsPlugin = "0.3.3"
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 xemantic-kotlin-test = { module = "com.xemantic.kotlin:xemantic-kotlin-test", version.ref = "xemanticKotlinTest" }
+kotlin-wrappers-kotlin-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlinWrappers" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

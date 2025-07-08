@@ -16,6 +16,14 @@
 
 package com.xemantic.kotlin.webcomponents.demo
 
+import web.components.customElements
+import web.dom.TagName
+import web.dom.document
+
 fun main() {
+    customElements.define(TagName("test-web-component"), TestWebComponent::class.js)
+//    val testWebComponent = TestWebComponent()
     console.log("Hello world")
+    val second = TestWebComponent()
+    document.body.append(second)
 }

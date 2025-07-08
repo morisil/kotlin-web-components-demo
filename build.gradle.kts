@@ -52,6 +52,13 @@ repositories {
     mavenCentral()
 }
 
+// Create a custom configuration for closure compiler
+val closureCompilerClasspath by configurations.creating
+
+dependencies {
+    closureCompilerClasspath("com.google.javascript:closure-compiler:v20250528")
+}
+
 kotlin {
 
     compilerOptions {
@@ -65,20 +72,12 @@ kotlin {
         progressiveMode = true
     }
 
-//    jvm {
-//        // set up according to https://jakewharton.com/gradle-toolchains-are-rarely-a-good-idea/
-//        compilerOptions {
-//            apiVersion = kotlinTarget
-//            languageVersion = kotlinTarget
-//            jvmTarget = JvmTarget.fromTarget(javaTarget)
-//            freeCompilerArgs.add("-Xjdk-release=$javaTarget")
-//            progressiveMode = true
-//        }
-//    }
-
     js {
         browser()
         binaries.executable()
+        compilerOptions {
+            target = "es2015"
+        }
     }
 
     sourceSets {
@@ -87,6 +86,12 @@ kotlin {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(libs.xemantic.kotlin.test)
+            }
+        }
+
+        jsMain {
+            dependencies {
+                implementation(libs.kotlin.wrappers.kotlin.browser)
             }
         }
 
@@ -197,4 +202,18 @@ jreleaser {
             status = releaseAnnouncement
         }
     }
+}
+
+tasks.register<JavaExec>("compileJs") {
+    group = "build"
+    description = "Compile JavaScript with Closure Compiler"
+
+    classpath = closureCompilerClasspath
+    mainClass.set("com.google.javascript.jscomp.CommandLineRunner")
+
+    args(
+        "--js", "build/dist/js/productionExecutable/kotlin-web-components-demo.js",
+        "--js_output_file", "build/dist/js/productionExecutable/kotlin-web-components-demo.min.js",
+        "--compilation_level", "ADVANCED_OPTIMIZATIONS"
+    )
 }
